@@ -1,5 +1,6 @@
 import ast
 import operator
+import re
 from datasets import load_dataset, DatasetDict
 
 
@@ -92,8 +93,14 @@ def can_use_calculator(s: str) -> bool:
     Hint:
         See the instruction/explanation in Q1.2
     """
-    # TODO
-    pass
+    if s == "" or len(s) < 4:
+        return False
+    elif s[-1] == ">" and s[-2] == ">":
+           return True
+    else:
+        return False
+
+ 
 
 
 def use_calculator(input: str) -> str:
@@ -111,8 +118,28 @@ def use_calculator(input: str) -> str:
 
     Hint: use safe_eval()
     """
-    # TODO
-    pass
+    if input == "":
+        return ""
+
+    match = re.search(r"<<(.*?)>>", input)
+    expression = match.group(1) if match else None
+    
+
+
+    print(match)
+    print("dum")
+    #print(input)
+    try:
+        if expression:
+            return input + str(eval(expression))
+        else:
+            return input
+       
+    except ValueError:
+        return input
+        
+  
+
 
 
 def extract_label(answer: str) -> float:
