@@ -126,7 +126,6 @@ def use_calculator(input: str) -> str:
     
 
 
-
     try:
         if expression:
             return input + str(eval(expression))
