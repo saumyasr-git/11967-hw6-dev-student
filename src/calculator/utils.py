@@ -126,9 +126,7 @@ def use_calculator(input: str) -> str:
     
 
 
-    print(match)
-    print("dum")
-    #print(input)
+
     try:
         if expression:
             return input + str(eval(expression))
